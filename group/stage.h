@@ -1,6 +1,6 @@
 #pragma once
 
-#define MAP_CHIP_X 30
+#define MAP_CHIP_X 300
 #define MAP_CHIP_Y 20
 
 #define MAP_CHIP_SIZE_X 32

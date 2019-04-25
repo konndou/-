@@ -162,10 +162,9 @@ int SystemInit(void)
 	if (DxLib_Init() == -1) return -1;					// DXﾗｲﾌﾞﾗﾘ初期化処理 
 	SetDrawScreen(DX_SCREEN_BACK);					// ひとまずﾊﾞｯｸﾊﾞｯﾌｧに描画 
 
-
-	PlayerSystemInit();
 	KeyCheckSystemInit();
 	stageSystemInit();
+	PlayerSystemInit();
 
 	fadeIn = false;
 	fadeOut = false;
@@ -184,19 +183,14 @@ void GameInit(void)
 
 	haikeiPos = { 0,0 };
 
-	PlayerInit();
 	stageInit();
+	PlayerInit();
+
 }
 
 //タイトルの処理
 void GameTitle(void)
 {
-	/*
-	titleCnt++;
-	if (titleCnt / 20 % 2) {
-		DrawGraph(210, 370, startkeyImage, true);
-	}
-	*/
 	GameTitleDraw();
 }
 
@@ -206,7 +200,7 @@ void GameTitleDraw(void)
 
 	DrawString(0, 0, "GameTitle", 0xffffff);
 	for (int y = 0; y < MAP_CHIP_Y; y++) {
-		for (int x = 0; x < MAP_CHIP_X; x++) {
+		for (int x = 0; x < 30; x++) {
 			DrawGraph(MAP_CHIP_SIZE_X * x + haikeiPos.x, MAP_CHIP_SIZE_Y * y, haikeiImage[haikeiData[y][x]], true);
 		}
 	}
@@ -225,8 +219,11 @@ void GameMain(void)
 		SetDrawBright(128, 128, 128);
 	}
 	else {
+		stageUpdate();
+		PlayerUpdate();
 		//HitCheck();
 	}
+
 	GameMainDraw();
 
 	if (pauseFlag) {	//1の時、処理を行う
@@ -241,9 +238,9 @@ void GameMain(void)
 
 void GameMainDraw(void)
 {
-	DrawFormatString(0, 0, 0xffffff, "GameMain : %d", gameCounter);
-	PlayerDraw();
 	stageDraw();
+	PlayerDraw();
+	DrawFormatString(0, 0, 0xffffff, "GameMain : %d", gameCounter);
 }
 
 //クリアー処理

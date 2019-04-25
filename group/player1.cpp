@@ -10,14 +10,14 @@ int player1Image[2];
 
 void PlayerSystemInit(void)
 {
-	LoadDivGraph("image/player1.png", 2, 2, 1, PLAYER_SIZE_X, PLAYER_SIZE_Y, player1Image);
+  	LoadDivGraph("image/player1.png", 2, 2, 1, PLAYER_SIZE_X, PLAYER_SIZE_Y, player1Image);
 }
 
 void PlayerInit(void)
 {
 	//èâä˙âª
 	player1.pos = { 5 * MAP_CHIP_SIZE_X, 8 * MAP_CHIP_SIZE_Y };
-	player1.size = { 32, 64 };
+	player1.size = { 32, 32 };
 	player1.sizeOffset = { (player1.size.x / 2), (player1.size.y / 2) };
 	player1.hitPosS = { 20, 16 };
 	player1.hitPosE = { 20, 32 };
@@ -180,12 +180,22 @@ void PlayerUpdate(void)
 		player1.damageFlag = false;
 		player1.imgLockCnt = 30;
 	}
-
 }
 
 void PlayerDraw(void)
 {
 	player1.animCnt++;
-	player1.pos = { SCREEN_SIZE_X / 2, SCREEN_SIZE_Y / 2 };
-	DrawGraph(player1.pos.x, player1.pos.y, player1Image[player1.animCnt], true);
+	if (player1.flag == true) {
+		if (player1.movedir == DIR_RIGHT) {
+			DrawGraph(player1.pos.x, player1.pos.y, player1Image[player1.animCnt / 10 % 2], true);
+		}
+		if (player1.movedir == DIR_LEFT) {
+			DrawTurnGraph(player1.pos.x, player1.pos.y, player1Image[player1.animCnt / 10 % 2], true);
+		}
+	}
+}
+
+CHARACTER GetPlayerPos(void)
+{
+	return player1;
 }
