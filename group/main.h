@@ -44,6 +44,7 @@ enum MOVE_DIR {
 typedef struct {
 	MOVE_DIR movedir;	//向いている方向
 	XY pos;				//キャラクタの位置(中心)
+	XY move;
 	XY size;			//キャラクタ画像のサイズ
 	XY sizeOffset;		//キャラクタ中央からの左上位置
 	XY hitPosS;			//当たり判定用の左上

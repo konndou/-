@@ -1,10 +1,8 @@
 ﻿  player1.cpp
-d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(48): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
-d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(56): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
-d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(63): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
-d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(67): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
-d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(79): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
-d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(117): warning C4244: '-=': 'double' から 'int' への変換です。データが失われる可能性があります。
-  stage.cpp
-  コードを生成中...
+d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(50): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(58): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(65): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(69): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(81): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\クッピーが行く！宮倉島の大冒険！\group\player1.cpp(119): warning C4244: '-=': 'double' から 'int' への変換です。データが失われる可能性があります。
   group.vcxproj -> D:\クッピーが行く！宮倉島の大冒険！\Debug\group.exe
