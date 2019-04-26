@@ -9,6 +9,7 @@ typedef enum {
 	GMODE_INIT,
 	GMODE_TITLE,
 	GMODE_GAME,
+	GMODE_SCLEAR,
 	GMODE_CLEAR,
 	GMODE_OVER
 }GAME_MODE;
@@ -24,7 +25,7 @@ int titleImage;
 int titleCnt;
 int pauseFlag;
 
-int haikeiImage[28];
+int haikeiImage[35];
 
 int haikeiData[20][30] = {
 { 9, 9, 9, 9, 9, 9,  9, 9, 9, 9, 9, 9,  9, 9, 9, 9, 9, 9,  9, 9, 9, 9, 9, 9,  9, 9, 9, 9, 9, 9},
@@ -116,7 +117,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 			if (trgkey[KEY_START]) {
 				gameMode = GMODE_OVER;
 			}
-			
+			break;
+
+		case GMODE_SCLEAR:
+			GameSClear();
 			break;
 
 		case GMODE_CLEAR:
@@ -234,6 +238,10 @@ void GameMain(void)
 	if (!pauseFlag) {	//0の時、処理を行う
 		gameCounter++;
 	}
+
+	if (PlayerGoal() == true) {
+		gameMode = GMODE_SCLEAR;
+	}
 }
 
 void GameMainDraw(void)
@@ -241,6 +249,14 @@ void GameMainDraw(void)
 	stageDraw();
 	PlayerDraw();
 	DrawFormatString(0, 0, 0xffffff, "GameMain : %d", gameCounter);
+}
+
+//ステージクリア
+void GameSClear(void)
+{
+	stageDraw();
+	PlayerGoalDraw();
+	DrawString(0, 0, "GameSClear", 0xffffff);
 }
 
 //クリアー処理

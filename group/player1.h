@@ -11,8 +11,10 @@ void PlayerSystemInit(void);
 void PlayerInit(void);
 void PlayerUpdate(void);
 void PlayerDraw(void);
+void PlayerGoalDraw(void);
 
 bool Player1HitCheck(XY sPos, XY sSize);
 CHARACTER GetPlayerPos(void);
 
+bool PlayerGoal(void);
 bool Player1GameOver(void);

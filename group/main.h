@@ -70,6 +70,7 @@ void GameTitle(void);
 void GameTitleDraw(void);
 void GameMain(void);
 void GameMainDraw(void);
+void GameSClear(void);
 void GameClear(void);
 void GameOver(void);
 void GameOverDraw(void);

@@ -168,6 +168,7 @@ void PlayerUpdate(void)
 				}
 			}
 		}
+		//ジャンプしていなかったらジャンプする
 		if (player1.jumpFlag == false) {
 			if (trgkey[P1_UP]) {
 				player1.jumpFlag = true;
@@ -205,6 +206,48 @@ void PlayerDraw(void)
 			DrawTurnGraph(player1.pos.x - player1.sizeOffset.x - mapTemp.x, player1.pos.y - player1.sizeOffset.y, image, true);
 		}
 	}
+}
+
+bool PlayerGoal(void)
+{
+	XY movedPos = player1.pos;
+	XY movedHitCheck = movedPos;
+	XY movedHitCheck2 = movedPos;
+	XY movedHitCheck3 = movedPos;
+
+	movedHitCheck.y = movedPos.y + player1.hitPosE.y;	//足元の座標計算
+	//足元右下
+	movedHitCheck2 = movedHitCheck;
+	movedHitCheck2.x = movedPos.x + player1.hitPosE.x;
+	//足元左下
+	movedHitCheck3 = movedHitCheck;
+	movedHitCheck3.x = movedPos.x - player1.hitPosE.x;
+
+	//ゴールしたかどうか
+	if (IsGoalPass(movedHitCheck) && IsGoalPass(movedHitCheck2) && IsGoalPass(movedHitCheck3)) {
+		return false;
+	}
+	return true;
+}
+
+void PlayerGoalDraw(void)
+{
+	int image = player1Image[player1.animCnt / 10 % 2];
+	if (player1.jumpFlag == true)image = player1jumpImage[player1.animCnt / 7 % 3];
+
+	XY mapTemp = GetMapPos();
+
+	player1.animCnt++;
+	if (player1.flag == true) {
+		if (player1.movedir == DIR_RIGHT) {
+			DrawGraph(player1.pos.x - player1.sizeOffset.x - mapTemp.x, player1.pos.y - player1.sizeOffset.y, image, true);
+		}
+		if (player1.movedir == DIR_LEFT) {
+			DrawTurnGraph(player1.pos.x - player1.sizeOffset.x - mapTemp.x, player1.pos.y - player1.sizeOffset.y, image, true);
+		}
+	}
+
+	player1.pos.y -= 2;
 }
 
 CHARACTER GetPlayerPos(void)
